@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Image Traveller</string>
+    <string name="title_activity_image_traveller">ImageTraveller</string>
+    <string name="action_settings">Settings</string>
+    <string name="stop">Stop</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="start">Start</string>
+</resources>
