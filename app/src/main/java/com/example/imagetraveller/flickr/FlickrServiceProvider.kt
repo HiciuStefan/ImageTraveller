@@ -19,11 +19,10 @@ class FlickrServiceProvider @Inject constructor() {
                 longitude = long
                 latitude = lat
             }
-            var results = flickr.photosInterface.search(searchParams, 5, 1)
-            if (results.isNullOrEmpty()) {
-                Maybe.empty()
-            } else {
-                Maybe.just(results[0])
+            val results = flickr.photosInterface.search(searchParams, 5, 1)
+            when (results.isNullOrEmpty()) {
+                true -> Maybe.empty()
+                false -> Maybe.just(results[0])
             }
         }
     }

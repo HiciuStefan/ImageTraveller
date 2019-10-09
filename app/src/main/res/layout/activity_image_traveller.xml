@@ -3,7 +3,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
 
-        >
+>
 
     <data>
         <import type="android.view.View"/>
@@ -12,9 +12,10 @@
                 type="com.example.imagetraveller.imagetraveller.viewmodel.ImageTravellerViewModel"/>
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
                 android:layout_height="wrap_content"
@@ -42,12 +43,10 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-                android:paddingTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:photos="@{viewModel.currentPhotos}">
         </androidx.recyclerview.widget.RecyclerView>
 
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
 </layout>

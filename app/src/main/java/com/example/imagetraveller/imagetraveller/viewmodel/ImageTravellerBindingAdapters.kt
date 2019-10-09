@@ -22,8 +22,6 @@ object ImageTravellerBindingAdapters {
             recyclerView.layoutManager = LinearLayoutManager(recyclerView.context, RecyclerView.VERTICAL, false)
         } else {
             (recyclerView.adapter as RecyclerViewPhotosAdapter).setPhotos(photos.reversed())
-
-//        (recyclerView.adapter as RecyclerViewPhotosAdapter).setPhotos( photos)
             recyclerView.adapter!!.notifyDataSetChanged()
         }
     }

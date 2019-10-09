@@ -9,7 +9,7 @@ import com.example.imagetraveller.databinding.PhotoItemBinding
 
 
 class RecyclerViewPhotosAdapter constructor(var photoList: List<String>) : RecyclerView.Adapter<RecyclerViewPhotosAdapter.PhotoView>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerViewPhotosAdapter.PhotoView {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoView {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding: PhotoItemBinding = DataBindingUtil.inflate(layoutInflater, R.layout.photo_item, parent, false)
         return PhotoView(binding)
@@ -17,8 +17,7 @@ class RecyclerViewPhotosAdapter constructor(var photoList: List<String>) : Recyc
 
     override fun getItemCount() = photoList.size
 
-
-    override fun onBindViewHolder(holder: RecyclerViewPhotosAdapter.PhotoView, position: Int) {
+    override fun onBindViewHolder(holder: PhotoView, position: Int) {
         holder.setBinding(photoList[position])
     }
 
@@ -27,7 +26,6 @@ class RecyclerViewPhotosAdapter constructor(var photoList: List<String>) : Recyc
     }
 
     class PhotoView(private val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root) {
-
         fun setBinding(photoUrl: String) {
             binding.photoUrl = photoUrl
         }
