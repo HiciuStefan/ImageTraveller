@@ -1,17 +1,13 @@
 package com.example.imagetraveller.flickr
 
-import com.example.imagetraveller.BuildConfig
 import com.flickr4java.flickr.Flickr
-import com.flickr4java.flickr.REST
 import com.flickr4java.flickr.photos.Photo
 import com.flickr4java.flickr.photos.SearchParameters
 import io.reactivex.Maybe
-import java.util.*
 import javax.inject.Inject
 
-class FlickrServiceProvider @Inject constructor() {
+class FlickrProvider @Inject constructor(private var flickr: Flickr) {
 
-    var flickr = Flickr(BuildConfig.FLICKR_KEY, BuildConfig.FLICKR_SECRET, REST())
 
     fun getImage(lat: String, long: String): Maybe<Photo> {
         return Maybe.defer {

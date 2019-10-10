@@ -6,16 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.imagetraveller.BuildConfig
 import com.example.imagetraveller.ImageTravellerApplication
-import com.example.imagetraveller.flickr.FlickrServiceProvider
 import com.example.imagetraveller.imagetraveller.repository.PermissionsRepository
 import com.example.imagetraveller.imagetraveller.ui.ImageTravellerActivity
-import com.flickr4java.flickr.Flickr
-import com.flickr4java.flickr.REST
-import com.flickr4java.flickr.photos.SearchParameters
-import io.reactivex.Completable
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 

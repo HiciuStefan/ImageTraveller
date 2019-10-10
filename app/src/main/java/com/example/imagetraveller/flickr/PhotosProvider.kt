@@ -15,8 +15,8 @@ import io.reactivex.schedulers.Schedulers
 import java.util.*
 import javax.inject.Inject
 
-class PhotosServiceProvider @Inject constructor(
-    private var flickrServiceProvider: FlickrServiceProvider,
+open class PhotosProvider @Inject constructor(
+    private var flickrProvider: FlickrProvider,
     private var context: Context
 ) {
 
@@ -29,7 +29,7 @@ class PhotosServiceProvider @Inject constructor(
     init {
         locationUpdate = object : LocationService.LocationUpdate {
             override fun onNewLocation(location: Location) {
-                flickrServiceProvider.getImage(location.latitude.toString(), location.longitude.toString())
+                flickrProvider.getImage(location.latitude.toString(), location.longitude.toString())
                     .subscribeOn(Schedulers.io())
                     .subscribeBy(
                         onSuccess = {
@@ -42,11 +42,11 @@ class PhotosServiceProvider @Inject constructor(
         }
     }
 
-    fun getCurrentPhotos(): MutableList<String> {
+    open fun getCurrentPhotos(): List<String> {
         return photoList
     }
 
-    fun subscribePhotoStream(photosStream: PhotosStream) {
+    open fun subscribePhotoStream(photosStream: PhotosStream) {
         if (!mBound) {
             ContextCompat.startForegroundService(context, Intent(context, LocationService::class.java).also { intent ->
                 context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
@@ -67,11 +67,11 @@ class PhotosServiceProvider @Inject constructor(
         return formattedUrl
     }
 
-    fun unsubscribePhotoStream() {
+    open fun unsubscribePhotoStream() {
         this.photoStream = null
     }
 
-    fun stopPhotoService() {
+    open fun stopPhotoService() {
         this.photoStream = null
         context.unbindService(connection)
         mBound = false
@@ -90,10 +90,12 @@ class PhotosServiceProvider @Inject constructor(
             locationService.startLocationUpdates(locationUpdate)
             mBound = true
         }
+
         override fun onServiceDisconnected(arg0: ComponentName) {
             mBound = false
         }
     }
+
 }
 
 

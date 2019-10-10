@@ -41,7 +41,7 @@ class LocationService : Service() {
         super.onCreate()
         locationRequest = LocationRequest.create().apply {
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-            smallestDisplacement = 25f
+            smallestDisplacement = 100f
             interval = 5000
             fastestInterval = 5000
         }

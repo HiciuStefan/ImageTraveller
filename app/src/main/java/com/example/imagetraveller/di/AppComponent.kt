@@ -8,7 +8,9 @@ import javax.inject.Singleton
 @Singleton
 @Component(
     modules = [AppModule::class,
-        ViewModelModule::class]
+        ViewModelModule::class,
+        FlickrModule::class
+    ]
 )
 interface AppComponent {
 
